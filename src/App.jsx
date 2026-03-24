@@ -10,7 +10,8 @@ import {
   Copy, Check, AlertTriangle, ShieldCheck, ShieldX, Zap, BarChart3, Loader2,
 } from "lucide-react";
 
-const API = "https://cryptoforge-api.onrender.com";
+// const API = "http://localhost:8000";
+const API = window.location.hostname === "localhost" ? "http://localhost:8000" : "https://cryptoforge-api.onrender.com";
 
 async function apiFetch(path, opts = {}) {
   try {
