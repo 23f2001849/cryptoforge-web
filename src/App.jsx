@@ -176,8 +176,8 @@ function TabVerify() {
 
   const go = async () => {
     if (!f1 || !f2) return;
-    if (f1.size > 2048 || f2.size > 2048) {
-    alert("For the live demo, files must be under 2KB. MatriXHash-256 is a pure Python research prototype — large files take minutes. A C implementation (planned) would be 1000× faster.");
+    if (f1.size > 4096 || f2.size > 4096) {
+    alert("For the live demo, files must be under 4KB. MatriXHash-256 is a pure Python research prototype — large files take minutes. A C implementation (planned) would be 1000× faster.");
     return;
     }
     setBusy(true);
