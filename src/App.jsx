@@ -179,7 +179,9 @@ function TabVerify() {
     if (!f1 || !f2) return;
     setBusy(true);
     const fd = new FormData(); fd.append("file1", f1); fd.append("file2", f2);
-    setRes(await apiFetch("/api/verify", { method: "POST", body: fd }));
+    const r = await apiFetch("/api/verify", { method: "POST", body: fd });
+    if (!r) alert("Hashing failed — file may be too large or server timed out.");
+    setRes(r);
     setBusy(false);
   };
 
