@@ -177,10 +177,6 @@ function TabVerify() {
 
   const go = async () => {
     if (!f1 || !f2) return;
-    if (f1.size > 4096 || f2.size > 4096) {
-    alert("For the live demo, files must be under 4KB. MatriXHash-256 is a pure Python research prototype — large files take minutes. A C implementation (planned) would be 1000× faster.");
-    return;
-    }
     setBusy(true);
     const fd = new FormData(); fd.append("file1", f1); fd.append("file2", f2);
     setRes(await apiFetch("/api/verify", { method: "POST", body: fd }));
