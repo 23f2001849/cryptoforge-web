@@ -1,13 +1,123 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ═══════════════════════════════════════════════════════════
+   CRYPTOFORGE — GLOBAL STYLES
+   ═══════════════════════════════════════════════════════════ */
 
-body {
-  background: #0d0d1a;
-  color: #e0e0e0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  -webkit-font-smoothing: antialiased;
+:root {
+  --bg: #0d0d1a;
+  --accent: #6366f1;
+  --accent-glow: #6366f140;
+  --emerald: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --text: #e0e0e0;
+  --muted: #888888;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+  --display: 'Syne', 'Arial Black', sans-serif;
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-::selection { background: rgba(99,102,241,0.3); }
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS (used by WelcomePage)
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scanSweep {
+  from { left: -100%; }
+  to { left: 100%; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Spinner animation (used by Dashboard) */
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════ */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+  /* Dashboard: stack tabs vertically, reduce padding */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELECTION STYLING
+   ═══════════════════════════════════════════════════════════ */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOCUS STYLES (accessibility)
+   ═══════════════════════════════════════════════════════════ */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
